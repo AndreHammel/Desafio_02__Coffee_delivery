@@ -1,10 +1,17 @@
 import styled from "styled-components";
 
+export const HeaderFixed = styled.header`
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: ${(props) => props.theme.background};
+  `
 
 export const HeaderContainer = styled.header`
-  /* background-color: gray; */
-
+  max-width: 70rem;
+  margin: 0 auto;
   height: 104px;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;

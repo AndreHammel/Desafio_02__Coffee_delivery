@@ -1,6 +1,19 @@
 import styled from "styled-components";
 
+export const HeroBackground = styled.div`
+  width: 100%;
+  height: 500px;
+  background-color: ${(props) => props.theme.background};
+
+  background-image: url('/src/assets/Background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`
+
 export const HeroContainer = styled.div`
+  max-width: 70rem;
+  margin: 0 auto;
   height: 34rem;
   display: flex;
   justify-content: space-between;
