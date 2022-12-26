@@ -25,44 +25,47 @@ export const HeaderContainer = styled.header`
     display: flex;
     gap: 12px;
     
-    & div {
-      padding: 0.5rem;
-      border-radius: 6px;
-
-    }
   }
   
-  .map {
-    background-color: ${props => props.theme['purple-light']};
-    font-size: 0.875rem;
-    font-weight: 400;
-    color: ${props => props.theme['purple-dark']};
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    line-height: 1.3;
-    
-    & svg {
-      color: ${props => props.theme['purple']};
-    }
-  }
+`
+
+export const MapIndicator = styled.div`
+  background-color: ${props => props.theme['purple-light']};
+  color: ${props => props.theme['purple-dark']};
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.3;
+  padding: 0.5rem;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
   
-  .shopping-cart {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background-color: ${props => props.theme['yellow-light']};
-    
-    & svg {
-      color: ${props => props.theme['yellow-dark']};
-    }
+  & svg {
+    color: ${props => props.theme['purple']};
   }
 
-  .indicatorAmountInCart {
+`
+export const ShoppingCartIndicator = styled.div`
+  position: relative;
+  background-color: ${props => props.theme['yellow-light']};
+  padding: 0.5rem;
+  border-radius: 6px;
+  
+  display: flex;
+  align-items: center;
+  
+  & svg {
+    color: ${props => props.theme['yellow-dark']};
+  }
+`
+
+export const AmountInCartIndicator = styled.div`
     position: absolute;
     width: 20px;
     height: 20px;
-    border-radius: 50%;
+    border-radius: 10px;
     top: -8px;
     left: 26.35px;
 
@@ -74,6 +77,5 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-`
 
+`
