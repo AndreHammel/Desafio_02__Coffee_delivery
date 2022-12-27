@@ -153,6 +153,9 @@ export const CardPanel = styled.div`
     & button {
       border: none;
       background-color: transparent;
+      line-height: 0;
+      cursor: pointer;
+
       & svg {
         color: ${(props) => props.theme["purple"]};
 
@@ -180,15 +183,17 @@ export const CardPanel = styled.div`
     margin-left: 0.5rem;
     margin-right: 24px;
     height: 100%;
+    cursor: pointer;
 
+    
     display: flex;
     align-items: center;
     justify-content: center;
-
+    
     svg {
       color: ${(props) => props.theme["base-card"]};
     }
-
+    
     &:hover {
       background-color: ${(props) => props.theme["purple"]};
     }

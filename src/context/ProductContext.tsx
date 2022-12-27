@@ -1,51 +1,75 @@
-import { ChangeEvent, createContext, ReactNode, useReducer } from "react";
+import {
+  ChangeEvent,
+  createContext,
+  ReactNode,
+  useReducer,
+  useState,
+} from "react";
 import { ProductsReducer } from "./../reducers/Products/Products";
-import { mock_data } from './../mock/mock_data'
-import {  changeQtyAction, operationAddSubtractQtyAction } from "./../reducers/Products/Actions";
+import { mock_data } from "./../mock/mock_data";
+import {
+  changeQtyAction,
+  operationAddSubtractQtyAction,
+  resetValue,
+} from "./../reducers/Products/Actions";
 
 export interface ProductType {
-  id: number,
-  title: string,
-  description: string,
-  tags: string[]
-  price: number
+  id: number;
+  title: string;
+  description: string;
+  tags: string[];
+  price: number;
   qty: number;
   image: string;
 }
 
 interface ProductsContextType {
-  handleButton: (id: number, type: string) => void
-  handleInput: (event: ChangeEvent<HTMLInputElement> , id: number) => void
-  products: ProductType[]
-  amountProducts: number
+  handleButton: (id: number, type: string) => void;
+  handleInput: (event: ChangeEvent<HTMLInputElement>, id: number) => void;
+  products: ProductType[];
+  amountProducts: number;
+  handleAddInShoppingCart: (id: number) => void;
 }
 
-export const ProductContext = createContext({} as ProductsContextType)
+export const ProductContext = createContext({} as ProductsContextType);
 
 interface ProductProviderProps {
-  children: ReactNode
-}
-
-function calculateQtyProducts(products: ProductType[]) {
-  return products.reduce((acc, rec) => acc + rec.qty, 0)
+  children: ReactNode;
 }
 
 export function ProductProvider({ children }: ProductProviderProps) {
-  const [products, dispatch] = useReducer( ProductsReducer, mock_data)
+  const [products, dispatch] = useReducer(ProductsReducer, mock_data);
+  const [addedInShoppingCart, setAddedInShoppingCart] = useState<ProductType[]>(
+    []
+  );
 
-  const amountProducts = calculateQtyProducts(products)
+  const amountProducts = addedInShoppingCart.length;
 
   function handleButton(id: number, type: string) {
-    dispatch(operationAddSubtractQtyAction(id, type))
+    dispatch(operationAddSubtractQtyAction(id, type));
   }
 
-  function handleInput(event: ChangeEvent<HTMLInputElement> , id: number) {
-    dispatch(changeQtyAction(Number(event.target.value), id))
+  function handleInput(event: ChangeEvent<HTMLInputElement>, id: number) {
+    dispatch(changeQtyAction(Number(event.target.value), id));
+  }
+
+  function handleAddInShoppingCart(id: number) {
+    const indexOfProduct = products.findIndex((item) => item.id === id);
+    setAddedInShoppingCart((prev) => [...prev, products[indexOfProduct]]);
+    dispatch(resetValue(id));
   }
 
   return (
-    <ProductContext.Provider value={ { handleButton,  handleInput, products, amountProducts} }>
-      { children }
+    <ProductContext.Provider
+      value={{
+        handleButton,
+        handleInput,
+        products,
+        amountProducts,
+        handleAddInShoppingCart,
+      }}
+    >
+      {children}
     </ProductContext.Provider>
-  )
+  );
 }
