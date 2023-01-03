@@ -26,12 +26,12 @@ export interface FormSchemaType extends SchemaType {
 export function Checkout() {
   const hookFormMethods = useForm<FormSchemaType>({
     defaultValues: {
-      cep: "90250-440",
-      rua: "Rua João Daniel Martinelli",
-      numero: "102",
-      bairro: "Farrapos",
-      cidade: "Porto Alegre",
-      uf: "RS",
+      cep: "",
+      rua: "",
+      numero: "",
+      bairro: "",
+      cidade: "",
+      uf: "SP",
       type: "credito",
     },
   });
