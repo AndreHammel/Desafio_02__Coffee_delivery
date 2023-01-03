@@ -1,13 +1,12 @@
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { ShoppingCart } from "phosphor-react";
 import { Hero } from "../../components/Hero";
 import { Card, CardContent, CardPanel, CardsBoard, CardsList } from "./styles";
 import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import { ActionTypes } from "../../reducers/Products/Actions";
+import { AddSubtractPanel } from "../../components/AddSubtractPanel";
 
 export function Home() {
-  const { products, handleButton, handleInput, handleAddInShoppingCart } =
-    useContext(ProductContext);
+  const { products, handleAddInShoppingCart } = useContext(ProductContext);
 
   return (
     <>
@@ -28,25 +27,7 @@ export function Home() {
                   <span>R$</span>
                   <span>{item.price}</span>
                 </div>
-                <div>
-                  <button
-                    onClick={() =>
-                      handleButton(item.id, ActionTypes.SUBTRACT_QTY)
-                    }
-                  >
-                    <Minus size={14} weight="bold" />
-                  </button>
-                  <input
-                    type="number"
-                    value={item.qty}
-                    onChange={(event) => handleInput(event, item.id)}
-                  />
-                  <button
-                    onClick={() => handleButton(item.id, ActionTypes.ADD_QTY)}
-                  >
-                    <Plus size={14} weight="bold" />
-                  </button>
-                </div>
+                <AddSubtractPanel id={item.id} qty={item.qty} />
                 <button onClick={() => handleAddInShoppingCart(item.id)}>
                   <ShoppingCart size={22} weight="fill" />
                 </button>

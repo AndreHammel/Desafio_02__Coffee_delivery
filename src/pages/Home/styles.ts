@@ -13,7 +13,6 @@ export const CardsBoard = styled.div`
     color: ${(props) => props.theme["base-subtitle"]};
     margin-bottom: 3.375rem;
   }
-
 `;
 
 export const CardsList = styled.div`
@@ -24,7 +23,6 @@ export const CardsList = styled.div`
   & > div:last-of-type {
     margin-bottom: 10rem;
   }
-
 `;
 
 export const Card = styled.div`
@@ -64,7 +62,6 @@ export const CardContent = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 
   & p:first-of-type {
@@ -89,7 +86,7 @@ export const CardContent = styled.div`
 export const CardPanel = styled.div`
   height: 38px;
   line-height: 1.3;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,6 +97,7 @@ export const CardPanel = styled.div`
     display: flex;
     align-items: center;
     background-color: transparent;
+    margin-right: 23px;
 
     & span:nth-child(1) {
       color: ${(props) => props.theme["base-text"]};
@@ -115,66 +113,6 @@ export const CardPanel = styled.div`
     }
   }
 
-  & > div:nth-child(2) {
-    max-width: 72px;
-    margin-left: 23px;
-    height: 100%;
-    border-radius: 6px;
-    border: none;
-    background-color: ${(props) => props.theme["purple-light"]};
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-
-    
-    & input {
-      width: 100%;
-      border: none;
-      padding: 0.25rem;
-      text-align: center;
-      background-color: transparent;
-      color: ${(props) => props.theme["base-title"]};
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.3;
-    }
-
-    //>> remove setas para cima e baixo no campo input texto do tipo número
-    & input::-webkit-outer-spin-button,
-    & input::-webkit-inner-spin-button,
-    input[type=number]  {
-      -webkit-appearance: none;
-      margin: 0;
-      -moz-appearance: textfield;
-    }
-
-    & button {
-      border: none;
-      background-color: transparent;
-      line-height: 0;
-      cursor: pointer;
-
-      & svg {
-        color: ${(props) => props.theme["purple"]};
-
-        &:hover {
-          color: ${(props) => props.theme["purple-dark"]};
-        }
-      }
-
-    }
-    
-    & button:first-of-type {
-      margin-left: 0.5rem;
-    }
-
-    & button:last-of-type {
-      margin-right: 0.5rem;
-    }
-  }
-
   & > button {
     padding: 0.5rem;
     background-color: ${(props) => props.theme["purple-dark"]};
@@ -185,15 +123,14 @@ export const CardPanel = styled.div`
     height: 100%;
     cursor: pointer;
 
-    
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     svg {
       color: ${(props) => props.theme["base-card"]};
     }
-    
+
     &:hover {
       background-color: ${(props) => props.theme["purple"]};
     }

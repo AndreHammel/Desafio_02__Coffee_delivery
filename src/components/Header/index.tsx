@@ -5,11 +5,11 @@ import {
   MapIndicator,
   ShoppingCartIndicator,
 } from "./styles";
-import logo from "./../../assets/logo.svg";
+import logo from "./../../assets/others_imagens/logo.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { useContext } from "react";
 import { ProductContext } from "../../context/ProductContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function Header() {
   const { amountProducts } = useContext(ProductContext);

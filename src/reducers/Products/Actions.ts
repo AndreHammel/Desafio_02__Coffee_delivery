@@ -1,18 +1,15 @@
-export enum ActionTypes {
-  ADD_QTY = "ADD_QTY",
-  SUBTRACT_QTY = "SUBTRACT_QTY",
-  CHANGE_QTY = "CHANGE_QTY",
-  RESET_QTY = "RESET_QTY",
-}
+import { ActionTypes } from "../../constants";
 
-export function operationAddSubtractQtyAction(id: number, type: string) {
+export function addSubtractQtyProductAction(id: number, type: string) {
   return {
     type,
-    payload: { id },
+    payload: {
+      id,
+    },
   };
 }
 
-export function changeQtyAction(qty: number, id: number) {
+export function changeQtyProductAction(qty: number, id: number) {
   return {
     type: ActionTypes.CHANGE_QTY,
     payload: {
